@@ -6,12 +6,15 @@
       && (typeof window === 'undefined' || window === global.window))
     ? global : this;
 
+  var moment;
   if (isNode) {
-    var moment = require('moment');
+    moment = require('moment');
+  } else {
+    moment = globalScope.moment;
   }
 
   if (typeof moment !== 'function') {
-    console.error('timediff requires moment.js');
+    throw new Error('timediff requires moment.js');
     return;
   }
 

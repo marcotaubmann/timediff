@@ -27,11 +27,11 @@ timediff('2015-01-01', '2018-05-02 02:15:10.777', 'YDHms');
   <script src="bower_components/moment/moment.js"></script>
   <script src="bower_components/timediff/timediff.js"></script>
   <script>
-    function showResult () {
+    (function showResult () {
       var result = timediff('2015-01-01', '2018-05-02 02:15:10.777', 'YDHms');
       console.log(result);
       document.getElementById('result').innerHTML = JSON.stringify(result);
-    }();
+    })();
   </script>
 ```
 
