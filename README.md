@@ -20,7 +20,7 @@ timediff(new Date(2015, 1, 1), new Date('2018-05-02 02:15:10.777'), 'YWDHS');
 
 // return the timediff only in month, minutes seconds, and milliseconds
 timediff(new Date(2015, 1, 1), new Date('2018-05-02 02:15:10.777'), 'MmSs');
-{ months: 39, minutes: 1575, seconds: 10, milliseconds: 777 }
+// => { months: 39, minutes: 1575, seconds: 10, milliseconds: 777 }
 
 // provide the result to a callback and return the result of the callback
 timediff('1969-06-09T06:09:06.069Z', new Date(), function (result) {
