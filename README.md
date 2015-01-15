@@ -4,7 +4,7 @@ Calculate a time difference in several time units.
 ## Usage
 
 ```sh
-$ npm install --save marcotaubmann/timediff
+$ npm install --save timediff
 ```
 
 ```js
