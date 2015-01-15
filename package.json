@@ -1,13 +1,13 @@
 {
   "name": "timespan",
   "version": "1.0.0",
-  "description": "Calculate the timespan between two time in different combineable time units.",
+  "description": "Convert a timespan to different time units.",
   "main": "timespan.js",
   "directories": {
     "test": "test"
   },
   "scripts": {
-    "test": "jasmine-node test/"
+    "test": "node_modules/jasmine-node/bin/jasmine-node test/"
   },
   "repository": {
     "type": "git",
@@ -28,5 +28,7 @@
   "dependencies": {
     "moment": "^2.9.0"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "jasmine-node": "^1.14.5"
+  }
 }
