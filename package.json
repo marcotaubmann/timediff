@@ -1,8 +1,8 @@
 {
-  "name": "timespan",
+  "name": "timediff",
   "version": "1.0.0",
-  "description": "Convert a timespan to different time units.",
-  "main": "timespan.js",
+  "description": "Calculate a time difference in several time units.",
+  "main": "timediff.js",
   "directories": {
     "test": "test"
   },
@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/marcotaubmann/timespan"
+    "url": "https://github.com/marcotaubmann/timediff"
   },
   "keywords": [
     "time",
@@ -22,9 +22,9 @@
   "author": "Marco Taubmann",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/marcotaubmann/timespan/issues"
+    "url": "https://github.com/marcotaubmann/timediff/issues"
   },
-  "homepage": "https://github.com/marcotaubmann/timespan",
+  "homepage": "https://github.com/marcotaubmann/timediff",
   "dependencies": {
     "moment": "^2.9.0"
   },

@@ -1,5 +1,5 @@
 var moment = require('moment');
-function timespan (start, end, options) {
+function timediff (start, end, options) {
   start = moment(start);
   if (!start.isValid()) throw 'invalid start date ' + start;
   end = moment(end);
@@ -109,4 +109,4 @@ function timespan (start, end, options) {
   return result;
 }
 
-module.exports = timespan;
+module.exports = timediff;

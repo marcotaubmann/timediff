@@ -1,36 +1,36 @@
-var timespan = require('../timespan.js');
+var timediff = require('../timediff.js');
 var moment = require('moment');
 
-describe('timespan', function () {
+describe('timediff', function () {
 
   it('should accept only parsable dates as first two parameters', function () {
-    expect(function () {timespan('no date'  , new Date()     )}).toThrow();
-    expect(function () {timespan(new Date() , function () {} )}).toThrow();
+    expect(function () {timediff('no date'  , new Date()     )}).toThrow();
+    expect(function () {timediff(new Date() , function () {} )}).toThrow();
 
-    expect(function () {timespan(new Date() , new Date())}).not.toThrow();
-    expect(function () {timespan('2015-01-12', new Date())}).not.toThrow();
-    expect(function () {timespan(new Date() , '2015-01-12 12:00:00')}).not.toThrow();
-    expect(function () {timespan(new Date() , new Date().toString())}).not.toThrow();
-    expect(function () {timespan(new Date() , moment())}).not.toThrow();
+    expect(function () {timediff(new Date() , new Date())}).not.toThrow();
+    expect(function () {timediff('2015-01-12', new Date())}).not.toThrow();
+    expect(function () {timediff(new Date() , '2015-01-12 12:00:00')}).not.toThrow();
+    expect(function () {timediff(new Date() , new Date().toString())}).not.toThrow();
+    expect(function () {timediff(new Date() , moment())}).not.toThrow();
   });
 
-  it('should calculate the timespan between the first two parameters as a result object with unit keys', function () {
+  it('should calculate the timediff between the first two parameters as a result object with unit keys', function () {
     var time  = new Date ();
-    var result = timespan(time, time);
+    var result = timediff(time, time);
     expect(result).toEqual({ years: 0, months: 0, weeks: 0, days: 0, hours: 0, minutes: 0, seconds: 0, milliseconds: 0 });
 
-    result = timespan('2015-01-01 12:00:00', '2016-02-09 13:01:01');
+    result = timediff('2015-01-01 12:00:00', '2016-02-09 13:01:01');
     expect(result).toEqual({ years: 1, months: 1, weeks: 1, days: 1, hours: 1, minutes: 1, seconds: 1, milliseconds: 0 });
 
-    result = timespan('2015-01-01 12:00:00', '2017-03-17 14:02:02');
+    result = timediff('2015-01-01 12:00:00', '2017-03-17 14:02:02');
     expect(result).toEqual({ years: 2, months: 2, weeks: 2, days: 2, hours: 2, minutes: 2, seconds: 2, milliseconds: 0 });
 
-    result = timespan('2014-09-20 16:44:15', '2016-03-03 01:03:10');
+    result = timediff('2014-09-20 16:44:15', '2016-03-03 01:03:10');
     expect(result).toEqual({ years: 1, months: 5, weeks: 1, days: 4, hours: 8, minutes: 18, seconds: 55, milliseconds: 0 });
   });
 
   it('should support years, months, weeks, days, hours, minutes, second and milliseconds as units', function () {
-    var result = timespan(new Date(), new Date());
+    var result = timediff(new Date(), new Date());
     expect(result.years  ).toBeDefined();
     expect(result.months ).toBeDefined();
     expect(result.weeks  ).toBeDefined();
@@ -50,7 +50,7 @@ describe('timespan', function () {
         minutes: true
       }
     };
-    var result = timespan('2014-09-18 16:44:15', '2015-01-13 21:49:10', options);
+    var result = timediff('2014-09-18 16:44:15', '2015-01-13 21:49:10', options);
     expect(result.years  ).not.toBeDefined();
     expect(result.months ).toBeDefined();
     expect(result.weeks  ).not.toBeDefined();
@@ -63,40 +63,40 @@ describe('timespan', function () {
 
   it('should accept a string containing any of "YMWDHmSs" as options.units to select result units', function () {
     var options = {units: 'MDHm'};
-    var result = timespan('2014-09-18 16:44:15', '2015-01-13 21:49:10', options);
+    var result = timediff('2014-09-18 16:44:15', '2015-01-13 21:49:10', options);
     expect(result).toEqual({months: 3, days: 26, hours: 5, minutes: 4});
 
     options = {units: 'YMD'};
-    result = timespan('1984-01-01', '2015-04-20 20:15:00', options);
+    result = timediff('1984-01-01', '2015-04-20 20:15:00', options);
     expect(result).toEqual({years: 31, months: 3, days: 19});
   });
 
   it('should accept an object containing any of the supported unit keys as options.units to select result units', function () {
     var options = {units: {months: true, days: true, hours: true, minutes: true}};
-    var result = timespan('2014-09-18 16:44:15', '2015-01-13 21:49:10', options);
+    var result = timediff('2014-09-18 16:44:15', '2015-01-13 21:49:10', options);
     expect(result).toEqual({months: 3, days: 26, hours: 5, minutes: 4});
 
     options = {units: {years: true, months: true, days: true}};
-    result = timespan('1984-01-01', '2015-04-20 20:15:00', options);
+    result = timediff('1984-01-01', '2015-04-20 20:15:00', options);
     expect(result).toEqual({years: 31, months: 3, days: 19});
   });
 
   it('should per default provide all requested units even if their value is 0', function () {
     var options = {units: 'YMD'};
-    var result = timespan('2015-01-01', '2015-04-01', options);
+    var result = timediff('2015-01-01', '2015-04-01', options);
     expect(result).toEqual({years: 0, months: 3, days: 0});
   });
 
   it('should provide only those requested units in the result whos values are not 0 if options.returnZeros === false', function () {
     var options = {units: 'YMD', returnZeros: false};
-    var result = timespan('2015-01-01', '2015-04-01', options);
+    var result = timediff('2015-01-01', '2015-04-01', options);
     expect(result).toEqual({months: 3});
     expect(result.years).not.toBeDefined();
     expect(result.days ).not.toBeDefined();
   });
 
   it('should accept a string containing any of "YMWDHmSs" as third parameter to select result units', function () {
-    var result = timespan('2014-09-18 16:44:15', '2015-01-13 21:49:10', 'MDHm');
+    var result = timediff('2014-09-18 16:44:15', '2015-01-13 21:49:10', 'MDHm');
     expect(result).toEqual({months: 3, days: 26, hours: 5, minutes: 4});
   });
 
@@ -108,7 +108,7 @@ describe('timespan', function () {
         done();
       }
     };
-    timespan('1984-01-01', '2015-04-20 20:15:00', options);
+    timediff('1984-01-01', '2015-04-20 20:15:00', options);
   });
 
   it('should provide the result to a callback if provided as third parameter', function (done) {
@@ -116,7 +116,7 @@ describe('timespan', function () {
       expect(result).toEqual({years: 31, months: 3, weeks: 2, days: 5, hours: 20, minutes: 15, seconds: 0, milliseconds: 0});
       done();
     }
-    timespan('1984-01-01', '2015-04-20 20:15:00', callback);
+    timediff('1984-01-01', '2015-04-20 20:15:00', callback);
   });
 
   it('should return the result of the callback if callback is used', function (done) {
@@ -130,13 +130,13 @@ describe('timespan', function () {
           .replace('%D', result.days);
       }
     };
-    var result = timespan('1984-01-01', '2015-04-20 20:15:00', options);
+    var result = timediff('1984-01-01', '2015-04-20 20:15:00', options);
     expect(result).toBe('age: 31 years, 3 months and 19 days');
     done();
   });
 
   it('should return the result if no callack is used', function () {
-    var result = timespan('2014-09-18 16:44:15', '2015-01-13 21:49:10', 'MDHm');
+    var result = timediff('2014-09-18 16:44:15', '2015-01-13 21:49:10', 'MDHm');
     expect(result).toEqual({months: 3, days: 26, hours: 5, minutes: 4});
   });
 

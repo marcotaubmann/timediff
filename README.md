@@ -1,29 +1,29 @@
-# timespan
-Convert a timespan to different time units.
+# timediff
+Calculate a time difference in several time units.
 
 ## Usage
 
 ```sh
-$ npm install --save marcotaubmann/timespan
+$ npm install --save marcotaubmann/timediff
 ```
 
 ```js
-var timespan = require('timespan');
+var timediff = require('timediff');
 
-// return the timespan in all possible units
-timespan(new Date(2015, 1, 1), new Date('2018-05-02 02:15:10'));
+// return the timediff in all possible units
+timediff(new Date(2015, 1, 1), new Date('2018-05-02 02:15:10'));
 // => { years: 3, months: 3, weeks: 0, days: 1, hours: 2, minutes: 15, seconds: 10, milliseconds: 0 }
 
-// return the timespan only in years, weeks, days hours and seconds
-timespan(new Date(2015, 1, 1), new Date('2018-05-02 02:15:10.777'), 'YWDHS');
+// return the timediff only in years, weeks, days hours and seconds
+timediff(new Date(2015, 1, 1), new Date('2018-05-02 02:15:10.777'), 'YWDHS');
 // => { years: 3, weeks: 12, days: 6, hours: 2, seconds: 910 }
 
-// return the timespan only in month, minutes seconds, and milliseconds
-timespan(new Date(2015, 1, 1), new Date('2018-05-02 02:15:10.777'), 'MmSs');
+// return the timediff only in month, minutes seconds, and milliseconds
+timediff(new Date(2015, 1, 1), new Date('2018-05-02 02:15:10.777'), 'MmSs');
 { months: 39, minutes: 1575, seconds: 10, milliseconds: 777 }
 
 // provide the result to a callback and return the result of the callback
-timespan('1969-06-09T06:09:06.069Z', new Date(), function (result) {
+timediff('1969-06-09T06:09:06.069Z', new Date(), function (result) {
   var strings = [];
   for(var key in result) {
     strings.push(result[key] + ' ' + key);
@@ -34,7 +34,7 @@ timespan('1969-06-09T06:09:06.069Z', new Date(), function (result) {
 
 // combine all options
 var christmas = new Date(); christmas.setMonth(11); christmas.setDate(24);
-timespan(new Date(), christmas, {
+timediff(new Date(), christmas, {
   units: 'MWD',
   returnZeros: false,
   callback: function (result) {return 'Time until christmas: ' + JSON.stringify(result);}
