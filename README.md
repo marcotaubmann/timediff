@@ -37,6 +37,7 @@ timediff('2015-01-01', '2018-05-02 02:15:10.777', 'YDHms');
 
 ## Examples
 
+```
 // return the timediff in all possible units
 timediff(new Date(2015, 1, 1), new Date('2018-05-02 02:15:10'));
 // => { years: 3, months: 3, weeks: 0, days: 1, hours: 2, minutes: 15, seconds: 10, milliseconds: 0 }
