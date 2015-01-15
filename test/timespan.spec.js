@@ -111,6 +111,14 @@ describe('timespan', function () {
     timespan('1984-01-01', '2015-04-20 20:15:00', options);
   });
 
+  it('should provide the result to a callback if provided as third parameter', function (done) {
+    var callback = function (result) {
+      expect(result).toEqual({years: 31, months: 3, weeks: 2, days: 5, hours: 20, minutes: 15, seconds: 0, millis: 0});
+      done();
+    }
+    timespan('1984-01-01', '2015-04-20 20:15:00', callback);
+  });
+
   it('should return the result of the callback if callback is used', function (done) {
     var options = {
       units: 'YMD',
