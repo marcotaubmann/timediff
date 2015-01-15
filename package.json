@@ -1,0 +1,32 @@
+{
+  "name": "timespan",
+  "version": "1.0.0",
+  "description": "Calculate the timespan between two time in different combineable time units.",
+  "main": "timespan.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "jasmine-node test/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/marcotaubmann/timespan"
+  },
+  "keywords": [
+    "time",
+    "moment",
+    "date",
+    "diff"
+  ],
+  "author": "Marco Taubmann",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/marcotaubmann/timespan/issues"
+  },
+  "homepage": "https://github.com/marcotaubmann/timespan",
+  "dependencies": {
+    "moment": "^2.9.0"
+  },
+  "devDependencies": {}
+}
