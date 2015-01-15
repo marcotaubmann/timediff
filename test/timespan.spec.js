@@ -128,7 +128,8 @@ describe('timespan', function () {
   });
 
   it('should return the result if no callack is used', function () {
-
+    var result = timespan('2014-09-18 16:44:15', '2015-01-13 21:49:10', 'MDHm');
+    expect(result).toEqual({months: 3, days: 26, hours: 5, minutes: 4});
   });
 
 });
