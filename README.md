@@ -3,12 +3,39 @@ Calculate a time difference in several time units.
 
 ## Usage
 
+### Node
+
 ```sh
 $ npm install --save timediff
 ```
 
 ```js
 var timediff = require('timediff');
+
+timediff('2015-01-01', '2018-05-02 02:15:10.777', 'YDHms');
+// => { years: 3, days: 121, hours: 2, minutes: 15, milliseconds: 10777 }
+```
+
+### Bower
+
+```sh
+  bower install --save timediff
+```
+
+```html
+  <code id="result"></code>
+  <script src="bower_components/moment/moment.js"></script>
+  <script src="bower_components/timediff/timediff.js"></script>
+  <script>
+    function showResult () {
+      var result = timediff('2015-01-01', '2018-05-02 02:15:10.777', 'YDHms');
+      console.log(result);
+      document.getElementById('result').innerHTML = JSON.stringify(result);
+    }();
+  </script>
+```
+
+## Examples
 
 // return the timediff in all possible units
 timediff(new Date(2015, 1, 1), new Date('2018-05-02 02:15:10'));
