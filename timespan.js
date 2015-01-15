@@ -22,7 +22,7 @@ function timespan (start, end, options) {
       hours: true,
       minutes: true,
       seconds: true,
-      millis: true
+      milliseconds: true
     },
     returnZeros: true,
     callback: null
@@ -37,7 +37,7 @@ function timespan (start, end, options) {
       if (options.units.search('H') === -1) config.units.hours = false;
       if (options.units.search('m') === -1) config.units.minutes = false;
       if (options.units.search('S') === -1) config.units.seconds = false;
-      if (options.units.search('s') === -1) config.units.millis = false;
+      if (options.units.search('s') === -1) config.units.milliseconds = false;
     } else if (typeof options.units == 'object') {
       if (!options.units.years  ) config.units.years   = false;
       if (!options.units.months ) config.units.months  = false;
@@ -46,7 +46,7 @@ function timespan (start, end, options) {
       if (!options.units.hours  ) config.units.hours   = false;
       if (!options.units.minutes) config.units.minutes = false;
       if (!options.units.seconds) config.units.seconds = false;
-      if (!options.units.millis ) config.units.millis  = false;
+      if (!options.units.milliseconds ) config.units.milliseconds  = false;
     }
 
     if (options.returnZeros === false) config.returnZeros = false;
@@ -97,9 +97,9 @@ function timespan (start, end, options) {
     if (config.returnZeros || seconds != 0) result.seconds = seconds;
   }
 
-  if (config.units.millis) {
-    var millis = end.valueOf() - start.valueOf();
-    if (config.returnZeros || millis != 0) result.millis = millis;
+  if (config.units.milliseconds) {
+    var milliseconds = end.valueOf() - start.valueOf();
+    if (config.returnZeros || milliseconds != 0) result.milliseconds = milliseconds;
   }
 
   if (config.callback) {

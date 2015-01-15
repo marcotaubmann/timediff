@@ -17,16 +17,16 @@ describe('timespan', function () {
   it('should calculate the timespan between the first two parameters as a result object with unit keys', function () {
     var time  = new Date ();
     var result = timespan(time, time);
-    expect(result).toEqual({ years: 0, months: 0, weeks: 0, days: 0, hours: 0, minutes: 0, seconds: 0, millis: 0 });
+    expect(result).toEqual({ years: 0, months: 0, weeks: 0, days: 0, hours: 0, minutes: 0, seconds: 0, milliseconds: 0 });
 
     result = timespan('2015-01-01 12:00:00', '2016-02-09 13:01:01');
-    expect(result).toEqual({ years: 1, months: 1, weeks: 1, days: 1, hours: 1, minutes: 1, seconds: 1, millis: 0 });
+    expect(result).toEqual({ years: 1, months: 1, weeks: 1, days: 1, hours: 1, minutes: 1, seconds: 1, milliseconds: 0 });
 
     result = timespan('2015-01-01 12:00:00', '2017-03-17 14:02:02');
-    expect(result).toEqual({ years: 2, months: 2, weeks: 2, days: 2, hours: 2, minutes: 2, seconds: 2, millis: 0 });
+    expect(result).toEqual({ years: 2, months: 2, weeks: 2, days: 2, hours: 2, minutes: 2, seconds: 2, milliseconds: 0 });
 
     result = timespan('2014-09-20 16:44:15', '2016-03-03 01:03:10');
-    expect(result).toEqual({ years: 1, months: 5, weeks: 1, days: 4, hours: 8, minutes: 18, seconds: 55, millis: 0 });
+    expect(result).toEqual({ years: 1, months: 5, weeks: 1, days: 4, hours: 8, minutes: 18, seconds: 55, milliseconds: 0 });
   });
 
   it('should support years, months, weeks, days, hours, minutes, second and milliseconds as units', function () {
@@ -38,7 +38,7 @@ describe('timespan', function () {
     expect(result.hours  ).toBeDefined();
     expect(result.minutes).toBeDefined();
     expect(result.seconds).toBeDefined();
-    expect(result.millis ).toBeDefined();
+    expect(result.milliseconds ).toBeDefined();
   });
 
   it('should only set result unit keys that are selected via the options.units key', function () {
@@ -58,7 +58,7 @@ describe('timespan', function () {
     expect(result.hours  ).toBeDefined();
     expect(result.minutes).toBeDefined();
     expect(result.seconds).not.toBeDefined();
-    expect(result.millis ).not.toBeDefined();
+    expect(result.milliseconds ).not.toBeDefined();
   });
 
   it('should accept a string containing any of "YMWDHmSs" as options.units to select result units', function () {
@@ -113,7 +113,7 @@ describe('timespan', function () {
 
   it('should provide the result to a callback if provided as third parameter', function (done) {
     var callback = function (result) {
-      expect(result).toEqual({years: 31, months: 3, weeks: 2, days: 5, hours: 20, minutes: 15, seconds: 0, millis: 0});
+      expect(result).toEqual({years: 31, months: 3, weeks: 2, days: 5, hours: 20, minutes: 15, seconds: 0, milliseconds: 0});
       done();
     }
     timespan('1984-01-01', '2015-04-20 20:15:00', callback);
