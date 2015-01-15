@@ -41,10 +41,6 @@ describe('timespan', function () {
     expect(result.millis ).toBeDefined();
   });
 
-  it('should use an object of options if provided as third argument', function () {
-
-  });
-
   it('should only set result unit keys that are selected via the options.units key', function () {
     var options = {
       units: {
@@ -97,6 +93,11 @@ describe('timespan', function () {
     expect(result).toEqual({months: 3});
     expect(result.years).not.toBeDefined();
     expect(result.days ).not.toBeDefined();
+  });
+
+  it('should accept a string containing any of "YMWDHmSs" as third parameter to select result units', function () {
+    var result = timespan('2014-09-18 16:44:15', '2015-01-13 21:49:10', 'MDHm');
+    expect(result).toEqual({months: 3, days: 26, hours: 5, minutes: 4});
   });
 
   it('should provide the result to a callback if provided as options key', function (done) {

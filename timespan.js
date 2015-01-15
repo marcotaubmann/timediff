@@ -5,6 +5,10 @@ function timespan (start, end, options) {
   end = moment(end);
   if (!end.isValid()) throw 'invalid end date ' + end;
 
+  if(options instanceof String || typeof options === 'string') {
+    options = {units: options};
+  }
+
   var config = {
     units: {
       years: true,
