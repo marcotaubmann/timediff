@@ -19,7 +19,7 @@
     "bower_components",
     "test"
   ],
-  "dependencies": [
+  "dependencies": { 
     "moment": "*"
-  ]
+  }
 }
