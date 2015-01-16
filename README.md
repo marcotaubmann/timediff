@@ -70,3 +70,90 @@ timediff(new Date(), christmas, {
 // => 'Time until christmas: {"months":11,"weeks":1,"days":1}'
 ```
 
+## API
+
+### timediff(start, end, options)
+
+Return the time difference between `start` and `end`. Use only the units specified in `options`.
+
+Return:
+```js
+{
+  years: 0,
+  months: 0,
+  weeks: 0,
+  days: 0,
+  hours: 0,
+  minutes: 0,
+  seconds: 0,
+  milliseconds: 0
+}
+```
+
+#### start, end
+
+*Required*
+Type: `string` | `Date` | `moment`
+
+#### options
+
+Type: `object` | `string` | `function`
+
+Default:
+```js
+{
+  units: {
+    years:true,
+    months: true,
+    weeks: true,
+    days: true,
+    hours: true,
+    minutes: true,
+    seconds: true,
+    milliseconds: true
+  },
+  returnZeros: true,
+  callback: null
+}
+```
+
+Use `timediff(start, end, unitString)` (where `unitString` is a string) as a shortcut for
+`timediff(start, end, {units: unitString})`.
+
+Use `timediff(start, end, callback)` (where `callback` is a function) as a shortcut for
+`timediff(start, end, {callback: callback})`.
+
+##### options.units
+
+Type: `object` | `string`
+  
+Can be an object as given above or a string containing any of `YMWDHmSs`.
+If a letter exists in the string the corresponding unit is used in
+the result.
+
+| letter | result uses  |
+| ------ | -------------|
+| Y      | years        |
+| M      | months       |
+| W      | weeks        |
+| D      | days         |
+| H      | hours        |
+| m      | minutes      |
+| S      | seconds      |
+| s      | milliseconds |
+
+##### options.returnZeros
+
+Type: boolean
+
+If `true` result can contain fields that are `0`, if `false` they are removed.
+
+##### options.callback
+
+Type: `function`
+
+Function that is called with the result of timediff as the first parameter.
+timediff returns the return value of this callback.
+
+## Licence
+MIT copyright [Marco Taubmann]
