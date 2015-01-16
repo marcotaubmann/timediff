@@ -74,51 +74,12 @@
 
     var result = {};
 
-    if (config.units.years) {
-      var years = end.diff(start, 'years');
-      start.add(years, 'years');
-      if (config.returnZeros || years != 0) result.years = years;
-    }
-
-    if (config.units.months) {
-      var months = end.diff(start, 'months');
-      start.add(months, 'months');
-      if (config.returnZeros || months != 0) result.months = months;
-    }
-
-    if (config.units.weeks) {
-      var weeks = end.diff(start, 'weeks');
-      start.add(weeks, 'weeks');
-      if (config.returnZeros || weeks != 0) result.weeks = weeks;
-    }
-
-    if (config.units.days) {
-      var days = end.diff(start, 'days');
-      start.add(days, 'days');
-      if (config.returnZeros || days != 0) result.days = days;
-    }
-
-    if (config.units.hours) {
-      var hours = end.diff(start, 'hours');
-      start.add(hours, 'hours');
-      if (config.returnZeros || hours != 0) result.hours = hours;
-    }
-
-    if (config.units.minutes) {
-      var minutes = end.diff(start, 'minutes');
-      start.add(minutes, 'minutes');
-      if (config.returnZeros || minutes != 0) result.minutes = minutes;
-    }
-
-    if (config.units.seconds) {
-      var seconds = end.diff(start, 'seconds');
-      start.add(seconds, 'seconds');
-      if (config.returnZeros || seconds != 0) result.seconds = seconds;
-    }
-
-    if (config.units.milliseconds) {
-      var milliseconds = end.valueOf() - start.valueOf();
-      if (config.returnZeros || milliseconds != 0) result.milliseconds = milliseconds;
+    for (var unit in config.units) {
+      if (config.units[unit]) {
+        var value = end.diff(start, unit);
+        start.add(value, unit);
+        if(config.returnZeros || value != 0) result[unit] = value;
+      }
     }
 
     if (config.callback) {
