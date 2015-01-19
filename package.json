@@ -1,6 +1,6 @@
 {
   "name": "timediff",
-  "version": "1.0.7",
+  "version": "1.1.0",
   "description": "Calculate a time difference in several time units.",
   "author": "Marco Taubmann",
   "license": "MIT",
