@@ -13,7 +13,7 @@ function help () {
     '',
     '  Usage: timediff <start> <end> [<units>]',
     '',
-    '  Example:',
+    '  Examples:',
     '',
     "    timediff 2013-12-01 '2015-04-20 12:20:10.342' YMWDHmSs",
     '    years: 1',
@@ -23,12 +23,23 @@ function help () {
     '    hours: 12',
     '    minutes: 20',
     '    seconds: 10',
-    '    milliseconds: 342'
+    '    milliseconds: 342',
+    '',
+    '    timediff 1989-11-09 now YD',
+    '    years: 25',
+    '    days: 71'
   ].join('\n'));
 }
 
 function run () {
-  var result = timediff(start, end, units);
+  var result;
+  try {
+    result = timediff(start, end, units);
+  } catch (e) {
+    console.error(e);
+    help();
+    return;
+  }
 
   for (unit in result) {
     console.log(unit + ': ' + result[unit]);

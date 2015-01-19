@@ -56,6 +56,10 @@ $ timediff --help
      minutes: 20
      seconds: 10
      milliseconds: 342
+
+     timediff 1989-11-09 now YD
+     years: 25
+     days: 71
 ```
 
 ## Examples

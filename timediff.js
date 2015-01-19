@@ -19,6 +19,13 @@
   }
 
   function timediff (start, end, options) {
+    var now = new Date();
+    if (start === 'now') {
+      start = now;
+    }
+    if (end === 'now') {
+      end = now;
+    }
     start = moment(start);
     if (!start.isValid()) throw 'invalid start date ' + start;
     end = moment(end);
