@@ -2,16 +2,17 @@
   "name": "timediff",
   "version": "1.0.7",
   "description": "Calculate a time difference in several time units.",
+  "author": "Marco Taubmann",
+  "license": "MIT",
   "main": "timediff.js",
-  "directories": {
-    "test": "test"
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "bin": {
+    "timediff": "cli.js"
   },
   "scripts": {
     "test": "node_modules/jasmine-node/bin/jasmine-node test/"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/marcotaubmann/timediff"
   },
   "keywords": [
     "time",
@@ -19,12 +20,14 @@
     "date",
     "diff"
   ],
-  "author": "Marco Taubmann",
-  "license": "MIT",
+  "homepage": "https://github.com/marcotaubmann/timediff",
   "bugs": {
     "url": "https://github.com/marcotaubmann/timediff/issues"
   },
-  "homepage": "https://github.com/marcotaubmann/timediff",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/marcotaubmann/timediff"
+  },
   "dependencies": {
     "moment": "^2.9.0"
   },
